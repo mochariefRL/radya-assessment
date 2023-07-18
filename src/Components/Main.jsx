@@ -1,6 +1,5 @@
 import React from "react";
 import RowPokemon from "./RowPokemon";
-import Pokeinfo from "./PokeInfo";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -11,7 +10,6 @@ const Main=()=>{
     const [url,setUrl]= useState("https://pokeapi.co/api/v2/pokemon/?limit=10")
     const [nextUrl,setNextUrl]=useState();
     const [prevUrl,setPrevUrl]=useState();
-    const [pokeDex,setPokeDex]=useState();
 
     const TABLE_HEAD = ["Id", "Image", "Name", "Action"];
 
@@ -37,10 +35,23 @@ const Main=()=>{
 
     useEffect(()=>{
         pokeFun();
+        checkUserData();
     },[url])
 
+    function checkUserData() {
+        const item = localStorage.getItem('pokemonData')
+        
+        if(item){
+            console.log(JSON.parse(item));
+        }
+
+        // localStorage.removeItem("pokemonData")
+      }
     return(
         <section class="bg-white dark:bg-gray-900">
+            <div className='pt-3 text-right'>
+                <a href="/mypokemon" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">My Pokemon</a>
+            </div>
             <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
                 <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
                     <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Pokemon</h2>
@@ -54,13 +65,13 @@ const Main=()=>{
                                 <tr>
                                     {TABLE_HEAD.map((head) => (
                                     <th key={head} className="border-b border-blue-gray-100 bg-blue-gray-50 p-4">
-                                        <td>{head}</td>
+                                        {head}
                                     </th>
                                     ))}
                                 </tr>
                             </thead>
                             <tbody>
-                                <RowPokemon pokemon={pokeData} loading={loading} infoPokemon={poke=>setPokeDex(poke)}/>
+                                <RowPokemon pokemon={pokeData} loading={loading} />
                             </tbody>
                         </table>
                         <div className="text-right">
@@ -78,11 +89,6 @@ const Main=()=>{
 
                         </div>
                     </div>
-                </div>
-            </div>
-            <div className="container">
-                <div className="right-content">
-                   <Pokeinfo data={pokeDex}/>
                 </div>
             </div>
         </section>
