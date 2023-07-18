@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/radya-assessment/static/css/main.bc568234.css",
+    "main.js": "/radya-assessment/static/js/main.8fc0ea3a.js",
+    "static/js/787.4b4daa96.chunk.js": "/radya-assessment/static/js/787.4b4daa96.chunk.js",
+    "index.html": "/radya-assessment/index.html",
+    "main.bc568234.css.map": "/radya-assessment/static/css/main.bc568234.css.map",
+    "main.8fc0ea3a.js.map": "/radya-assessment/static/js/main.8fc0ea3a.js.map",
+    "787.4b4daa96.chunk.js.map": "/radya-assessment/static/js/787.4b4daa96.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bc568234.css",
+    "static/js/main.8fc0ea3a.js"
+  ]
+}
